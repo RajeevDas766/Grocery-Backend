@@ -17,7 +17,10 @@ import addressRoutes from "./routes/address.routes.js"
 import { connectCloudinary } from "./config/cloudinary.js";
 const app = express();
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://grocery-frontend-beta-snowy.vercel.app"
+];
 connectCloudinary();
 app.use(express.json());
 app.use(cors({ origin: allowedOrigins, credentials: true }));
