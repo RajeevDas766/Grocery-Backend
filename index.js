@@ -18,8 +18,8 @@ import { connectCloudinary } from "./config/cloudinary.js";
 const app = express();
 
 const allowedOrigins = [
-    "http://localhost:5173",
-    "https://grocery-frontend-beta-snowy.vercel.app"
+    "http://localhost:5173",
+    "https://grocery-frontend-beta-snowy.vercel.app"
 ];
 connectCloudinary();
 app.use(express.json());
@@ -34,10 +34,10 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/address",addressRoutes);
 
-
+// Establish database connection first
+connectDB();
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-connectDB();
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
