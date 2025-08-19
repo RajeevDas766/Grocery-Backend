@@ -17,10 +17,7 @@ import addressRoutes from "./routes/address.routes.js"
 import { connectCloudinary } from "./config/cloudinary.js";
 const app = express();
 
-const allowedOrigins = [
-    "http://localhost:5173",
-    "https://grocery-frontend-beta-snowy.vercel.app"
-];
+const allowedOrigins = ["http://localhost:5173"];
 connectCloudinary();
 app.use(express.json());
 app.use(cors({ origin: allowedOrigins, credentials: true }));
@@ -34,10 +31,10 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/address",addressRoutes);
 
-// Establish database connection first
-connectDB();
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+connectDB();
+    console.log(`Server is running on port ${PORT}`);
 });
